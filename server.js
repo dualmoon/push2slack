@@ -24,6 +24,13 @@ client.on('connect', function(connection) {
         }
         var msg = JSON.parse(message.utf8Data);
         if(msg.type=="tickle"){
+          //TODO
+          //GET req @https://api.pushbullet.com/v2/pushes?modified_after=0
+          //uses basic http auth, private.pbAPIkey as username, no pass
+          //reponse will include an array of objects called `pushes'
+          //each object will have a `type' of `link', `note', or `file'
+          //for notes, we need `title' and `body', links add `url'
+          //for files, `title' and `file_name', `file type', and `file_url'
           request({
             uri: private.slackURI,
             method: "POST",
