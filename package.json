@@ -1,0 +1,11 @@
+{
+  "name": "push2slack",
+  "version": "0.0.1",
+  "description": "Pushbullet to slack integration",
+  "main": "server.js",
+  "repository": "",
+  "author": "Ashley Davis <luna@airsi.de>",
+  "dependencies": {
+    "websocket": "^1.0.10"
+  }
+}
