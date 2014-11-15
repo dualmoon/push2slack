@@ -82,7 +82,8 @@ client.on('connect', function(connection) {
                 //only react if we get a link or note
                 if(push.type!="link"&&push.type!="note") return 1;
                 
-                var fallback,value,text,pretext = "";
+                var fallback,value,text,pretext;
+                fallback=value=text=pretext="";
                 //if we have a body, set `text` to that
                 if(push.body) text = push.body;
                 //format outgoing messages for received link pushes
