@@ -1,10 +1,10 @@
 #!/usr/bin/env node
 
 var private = require("./private.js");
-var request = require("request")
+var request = require("request");
 var WebSocketClient = require('websocket').client;
 
-var date = new Date()
+var date = new Date();
 var client = new WebSocketClient();
 
 String.prototype.trunc =
@@ -35,7 +35,7 @@ function log(type, timestamp, message){
 }
 
 client.on('connectFailed', function(error) {
-    console.log('Connect Error: ' + error.toString());
+    log('error',true,'Connect Error: ' + error.toString());
 });
 
 client.on('connect', function(connection) {
@@ -44,7 +44,7 @@ client.on('connect', function(connection) {
         log('error',true,"Connection Error: " + error.toString());
     });
     connection.on('close', function() {
-        log('error'+true+'Socket Connection Closed');
+        log('error',true,'Socket Connection Closed');
     });
     connection.on('message', function(message) {
         
@@ -95,7 +95,7 @@ client.on('connect', function(connection) {
                     fallback = "Push from "+push.sender_name+": "+push.title+" -- "+text.trunc(50,true);
                     value = text;
                 }
-                pretext = "Push from "+push.sender_name
+                pretext = "Push from "+push.sender_name;
                 request({
                     uri: private.slackURI,
                     method: "POST",
