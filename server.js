@@ -31,6 +31,7 @@ client.on('connect', function(connection) {
           //each object will have a `type' of `link', `note', or `file'
           //for notes, we need `title' and `body', links add `url'
           //for files, `title' and `file_name', `file type', and `file_url'
+          //`pushes' array is sorted newest push at 0
           request({
             uri: private.slackURI,
             method: "POST",
