@@ -1,0 +1,2 @@
+exports.pbAPIkey = "xxxxxxxxxxxxxxxxxxx";
+exports.slackURI = "https://hooks.slack.com/services/xxxxxxxx/xxxxxxxxxxxxxxxxxx";
