@@ -89,12 +89,14 @@ class PushClient
     #TODO: optionalize this somehow
     if push.channelMessage
       payload.channel = "#internet_deals"
+    else if push.text == "test"
+      payload.channel = "#development"
     if push.type is 'link'
       payload.fallback = "Push from #{push.senderName}: <#{push.url}|#{push.title}> #{push.text.trunc 30, true}"
-      payload.fields.value = "<#{push.url}|#{push.title}>\n#{push.text}"
+      payload.fields[0].value = "<#{push.url}|#{push.url}>\n#{push.text}"
     else if push.type is 'note'
       payload.fallback = "Push from #{push.senderName}: *#{push.title}* — #{push.text.trunc 50, true}"
-      payload.fields.value = push.text
+      payload.fields[0].value = push.text
     else return 1
     # Payload is built, let's build request options
     log.debug "Payload is: #{JSON.stringify payload}"
