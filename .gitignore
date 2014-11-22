@@ -27,10 +27,8 @@ node_modules
 # Users Environment Variables
 .lock-wscript
 
-#
-private.js
+# Private data
+private.coffee
 
-#Cloud9 config
+# Cloud9 config
 .c9
-
-PushedMessage.coffee

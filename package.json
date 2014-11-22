@@ -6,6 +6,8 @@
   "repository": "",
   "author": "Ashley Davis <luna@airsi.de>",
   "dependencies": {
+    "coffee-script": "^1.8.0",
+    "log": "^1.4.0",
     "request": "^2.48.0",
     "websocket": "^1.0.10"
   }
