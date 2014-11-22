@@ -32,3 +32,5 @@ private.js
 
 #Cloud9 config
 .c9
+
+PushedMessage.coffee

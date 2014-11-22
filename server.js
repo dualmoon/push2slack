@@ -7,6 +7,7 @@ var WebSocketClient = require('websocket').client;
 var date = new Date();
 var client = new WebSocketClient();
 
+// Truncates a string if it's longer than 
 String.prototype.trunc =
      function(n,useWordBoundary){
          var toLong = this.length>n,
@@ -54,6 +55,8 @@ client.on('connect', function(connection) {
         // Decide how to log the message received
         //assume it's an error unless otherwise noted
         var noteType = "error";
+        
+        var channel = "#general";
         //assume we want timestamps unless otherwise noted
         var noteStamp = true;
         if(msg.type=="nop"){
@@ -86,10 +89,16 @@ client.on('connect', function(connection) {
                 fallback=value=text=pretext="";
                 //if we have a body, set `text` to that
                 if(push.body) text = push.body;
+                if(text=="test"){
+                    channel = "#development";
+                }
                 //format outgoing messages for received link pushes
                 if(push.type=="link"){
                     fallback = "Push from "+push.sender_name+": <"+push.url+"|"+push.title+"> "+text.trunc(30,true);
                     value = "<"+push.url+"|"+push.url+">\n"+text;
+                }
+                if(msg.channel_iden){
+                    channel = "#internet_deals";
                 }
                 //format outgoing messages for received note pushes
                 if(push.type=="note"){
@@ -106,6 +115,7 @@ client.on('connect', function(connection) {
                             fallback: fallback,
                             pretext: pretext,
                             color: 'good',
+                            channel: channel,
                             fields: [{
                                 title: push.title,
                                 value: value,
