@@ -6,8 +6,7 @@ class Pushed
     @text       = if pushData.body then pushData.body else ""
     @title      = pushData.title
     # Is this a message pushed from a channel?
-    @channelMessage  = false
-    @channelMessage ?= pushData.channel_iden
+    @channelMessage = if pushData.channel_iden then true else false
     if @type == 'link'
       @url = pushData.url
       
